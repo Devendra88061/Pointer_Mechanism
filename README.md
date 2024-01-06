@@ -1,20 +1,9 @@
-# Project Name - User Crud Project
+# Project Name - Pointer tracker mechanism
 
 # cmd -
-- start dev server -  cmd - "start": "nodemon index.ts"
-
-- start prod server - cmd - "start-prod":"node index.ts"
-
-- start multiple server - cmd - "start-multi": "node index.ts"
+- start server -  cmd - "start": "nodemon index.ts"
 
 # Api Url 
 
--- Add user  => http://localhost:8000/user/addUser
--- Get all users => http://localhost:8001/user/getAllUsers
--- get user by id => http://localhost:8002/user/getUser/userId
--- Update user by id => http://localhost:8003/user/updateUser/UserId
--- Delete user by id => http://localhost:8000/user/deleteUser/UserId
-
-## Installation
-
-# Bonus point Also covered in this project with cluster module added
+-- Add pointer  => http://localhost:3000/api/pointer/addPointer
+-- Get all pointers by user id => http://localhost:3000/api/pointer/getPointers/2
