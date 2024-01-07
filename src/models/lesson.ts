@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 // Define the User schema
-const pointerSchema = new mongoose.Schema({
+const lessonSchema = new mongoose.Schema({
     userId : {
         type: String,
         required: true,
@@ -10,7 +10,15 @@ const pointerSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    points: {
+    milestone: {
+        type: String,
+        required: true,
+    },
+    lesson: {
+        type: String,
+        required: true,
+    },
+    progress: {
         type: Number,
         required: true,
     },
@@ -19,6 +27,6 @@ const pointerSchema = new mongoose.Schema({
         default: Date.now
     }
 });
-// Create the User model
-const pointer = mongoose.model("Pointer", pointerSchema);
-export default pointer;
+// Create the Lesson model
+const Lesson = mongoose.model("Lesson", lessonSchema);
+export default Lesson;

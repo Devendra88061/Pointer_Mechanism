@@ -5,6 +5,8 @@ const pointerRouter = Router();
 
 pointerRouter.post("/addPointer", pointerController.addPointer);
 
-pointerRouter.get("/getPointers/:userId", pointerController.getPointersByUserId);
+pointerRouter.get("/getPointers/:userId/:sessionId", pointerController.getPointersByUserId);
+
+
 
 export default pointerRouter;

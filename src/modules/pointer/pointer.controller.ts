@@ -26,12 +26,14 @@ class pointerController {
     static async getPointersByUserId(request: Request, response: Response, next: NextFunction) {
         try {
             const userID = request.params.userId;
-            console.log("id----", userID);
-            pointerServices.getPointersByUserID(userID,(err: any, result: any) => {
+            const sessionID = request.params.sessionId;
+            console.log("userID----", userID);
+            console.log("sessionID----", sessionID);
+            pointerServices.getPointersByUserID(userID,sessionID,(err: any, result: any) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("GetSingleUsers", result, "GetSingleUsers Returned", null, null, null));
+                    response.status(200).send(new HttpResponse("GetPointer", result, "Total pointer Returned", null, null, null));
                 }
             });
         } catch (err) {
@@ -39,5 +41,7 @@ class pointerController {
             next(new HttpException(400, "Something went wrong"));
         }
     }
+
+    
 }
 export default pointerController;
