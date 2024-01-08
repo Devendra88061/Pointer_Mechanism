@@ -1,13 +1,12 @@
 {
-  "name": "user_crud_project",
+  "name": "pointer mechanism",
   "version": "1.0.0",
   "description": "Test Project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.ts",
-    "start-prod":"node index.ts",
-    "start-multi": "node index.ts"
+    "start-prod": "ts-node index.ts"
   },
   "author": "Devendra Patil",
   "license": "ISC",
@@ -18,7 +17,8 @@
     "express": "^4.18.2",
     "mongoose": "^8.0.3",
     "nodemon": "^3.0.2",
-    "os": "^0.1.2"
+    "os": "^0.1.2",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
