@@ -18,8 +18,7 @@ class lessonServices {
     static async getLessonProgress(userID: any, next: CallableFunction) {
         try {
             const recordCount = await new CrudOperations(Lesson).countAllDocuments({userId: userID});
-            const result = await new CrudOperations(Lesson).getAllDocuments({ userId: userID }, {}, {}, {});
-    
+            const result = await new CrudOperations(Lesson).getAllDocuments({ userId: userID }, {}, {}, {createdAt: -1});
             const response = {
                 result,
                 recordCount

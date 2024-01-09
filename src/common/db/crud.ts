@@ -55,7 +55,7 @@ class CrudOperations {
        .find(query, projections)
        .skip(offset)
        .limit(options.limit)
-       .sort(sort ? sort : { createdAt: -1 })
+       .sort(sort ? sort : { createdAt: -1})
        .lean();
    }
  
