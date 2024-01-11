@@ -27,15 +27,20 @@ class pointerController {
         try {
             const userID = request.params.userId;
             const sessionID = request.params.sessionId;
-            console.log("userID----", userID);
-            console.log("sessionID----", sessionID);
-            pointerServices.getPointersByUserID(userID,sessionID,(err: any, result: any) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("GetPointer", result, "Total pointer Returned", null, null, null));
-                }
-            });
+            if (userID == "null") {
+                response.status(400).send(new HttpResponse(null, null,"userId is not be null", null,null,null));
+            }
+            else if (sessionID == "null") {
+                response.status(400).send(new HttpResponse(null, null,"sessionId is not be null", null,null,null));
+            }else{
+                pointerServices.getPointersByUserID(userID,sessionID,(err: any, result: any) => {
+                    if (err) {
+                        next(new HttpException(400, err));
+                    } else {
+                        response.status(200).send(new HttpResponse("GetPointer", result, "Total pointer Returned", null, null, null));
+                    }
+                });
+            }  
         } catch (err) {
             console.log(err);
             next(new HttpException(400, "Something went wrong"));
