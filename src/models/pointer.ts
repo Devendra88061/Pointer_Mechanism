@@ -23,6 +23,6 @@ const pointerSchema = new mongoose.Schema({
         default: Date.now
     }
 });
-// Create the User model
+// Create pointer model
 const pointer = mongoose.model("Pointer", pointerSchema);
 export default pointer;
