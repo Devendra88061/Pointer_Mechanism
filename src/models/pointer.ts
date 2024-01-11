@@ -16,7 +16,7 @@ const pointerSchema = new mongoose.Schema({
     },
     milestone: {
         type: String,
-        required: true,
+        required: false,
     },
     createdAt: {
         type: Date,
