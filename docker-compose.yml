@@ -1,0 +1,7 @@
+version: '3.1'
+services:
+  points-lesson-tracking:
+    image: all-points-lesson-tracking
+    ports:
+      - '3002:3000'
+    restart: always
