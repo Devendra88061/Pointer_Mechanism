@@ -10,6 +10,10 @@ const pointerSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    language: {
+        type: String,
+        required: true,
+    },
     points: {
         type: Number,
         required: true,

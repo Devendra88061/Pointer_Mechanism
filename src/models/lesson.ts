@@ -14,6 +14,14 @@ const lessonSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    milestoneLevel: {
+        type: String,
+        required: false,
+    },
+    language: {
+        type: String,
+        required: true,
+    },
     lesson: {
         type: String,
         required: true,

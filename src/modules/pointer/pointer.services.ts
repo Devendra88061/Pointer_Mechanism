@@ -13,8 +13,8 @@ class pointerServices {
             const userID = result.userId;
             const sessionID = result.sessionId;
 
-            const pointerUserData = await new CrudOperations(Pointer).getAllDocuments({ userId: userID }, {}, {}, {});
-            const pointerSessionData = await new CrudOperations(Pointer).getAllDocuments({ sessionId: sessionID }, {}, {}, {});
+            const pointerUserData = await new CrudOperations(Pointer).getAllDocuments({ userId: userID }, {});
+            const pointerSessionData = await new CrudOperations(Pointer).getAllDocuments({ sessionId: sessionID }, {});
 
             result = result.toObject();
 
@@ -31,16 +31,20 @@ class pointerServices {
     };
 
     // get Pointers by userId
-    static async getPointersByUserID(userID: any, sessionID: any, next: CallableFunction) {
+    static async getPointersByUserID(userID: any, sessionID: any,language:any, next: CallableFunction) {
         try {
-                const result = await new CrudOperations(Pointer).getAllDocuments({ userId: userID }, {}, {}, {});
+                const result = await new CrudOperations(Pointer).getAllDocuments({ userId: userID }, {});
                 const totalUserPoints = result.reduce((total: any, doc: any) => total + (doc.points || 0), 0);
 
-                const sessionData = await new CrudOperations(Pointer).getAllDocuments({ sessionId: sessionID }, {}, {}, {});
+                const languageData = await new CrudOperations(Pointer).getAllDocuments({ userId: userID , language: language}, {});
+                const totalLanguagePoints = languageData.reduce((total: any, doc: any) => total + (doc.points || 0), 0);
+
+                const sessionData = await new CrudOperations(Pointer).getAllDocuments({ sessionId: sessionID }, {});
                 const totalSessionPoints = sessionData.reduce((total: any, doc: any) => total + (doc.points || 0), 0);
 
                 const response = {
                     totalUserPoints,
+                    totalLanguagePoints,
                     totalSessionPoints,
                     result,
                 }

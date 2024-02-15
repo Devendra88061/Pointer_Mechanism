@@ -46,15 +46,15 @@ class CrudOperations {
   
    getAllDocuments(
      query: any,
-     projections: any,
-     options: any,//page,limit
+    //  projections: any,
+    //  options: any,//page,limit
      sort: any
    ) {
-     const offset = options.limit * options.pageNo;
+     //const offset = options.limit * options.pageNo;
      return this.dbModel
-       .find(query, projections)
-       .skip(offset)
-       .limit(options.limit)
+       .find(query) //projections)
+       //.skip(offset)
+       //.limit(options.limit)
        .sort(sort ? sort : { createdAt: -1})
        .lean();
    }

@@ -8,6 +8,7 @@ class lessonServices {
     public static async addLesson(lesson: any, next: any) {
         try {
             const newLesson = new Lesson(lesson);
+            console.log("newLesson---", newLesson);
             var result = await new CrudOperations(Lesson).save(newLesson);
             return next(null, result);
         } catch (err: any) {
@@ -17,12 +18,14 @@ class lessonServices {
 
     static async getLessonProgress(userID: any, next: CallableFunction) {
         try {
-            const recordCount = await new CrudOperations(Lesson).countAllDocuments({userId: userID});
-            const result = await new CrudOperations(Lesson).getAllDocuments({ userId: userID }, {}, {}, {createdAt: -1});
-            const response = {
-                result,
-                recordCount
-            };
+            let firstObj = {};
+            const firstResult = await new CrudOperations(Lesson).getAllDocuments({ userId: userID },{createdAt: -1});
+            if(firstResult.length > 0){
+              firstObj = firstResult[0];
+            }else{
+                return next(null, "No data found for this user!");
+            }
+            const response = {firstObj}
             next(null, response);
         } catch (err) {
             console.log("Error:", err);

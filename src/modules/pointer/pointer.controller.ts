@@ -27,13 +27,17 @@ class pointerController {
         try {
             const userID = request.params.userId;
             const sessionID = request.params.sessionId;
+            const language = request.params.language
             if (userID == "null") {
                 response.status(400).send(new HttpResponse(null, null,"userId is not be null", null,null,null));
             }
             else if (sessionID == "null") {
                 response.status(400).send(new HttpResponse(null, null,"sessionId is not be null", null,null,null));
+            }
+            else if (language == "null") {
+                response.status(400).send(new HttpResponse(null, null,"language is not be null", null,null,null));
             }else{
-                pointerServices.getPointersByUserID(userID,sessionID,(err: any, result: any) => {
+                pointerServices.getPointersByUserID(userID,sessionID,language,(err: any, result: any) => {
                     if (err) {
                         next(new HttpException(400, err));
                     } else {
