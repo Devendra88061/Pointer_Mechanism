@@ -16,16 +16,16 @@ class lessonServices {
         }
     };
 
-    static async getLessonProgress(userID: any, next: CallableFunction) {
+    static async getLessonProgress(userID: any, language: any, next: CallableFunction) {
         try {
-            let firstObj = {};
-            const firstResult = await new CrudOperations(Lesson).getAllDocuments({ userId: userID },{createdAt: -1});
+            let result = {};
+            const firstResult = await new CrudOperations(Lesson).getAllDocuments({ userId: userID,language: language},{createdAt: -1});
             if(firstResult.length > 0){
-              firstObj = firstResult[0];
+                result = firstResult[0];
             }else{
                 return next(null, "No data found for this user!");
             }
-            const response = {firstObj}
+            const response = {result}
             next(null, response);
         } catch (err) {
             console.log("Error:", err);
