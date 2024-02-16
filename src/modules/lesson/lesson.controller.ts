@@ -24,8 +24,8 @@ class lessonController {
 
     static async getLessonProgress(request: Request, response: Response, next: NextFunction) {
         try {
-            const userID = request.params.userId;
-            const language = request.params.language;
+            const userID = request.query.userId;
+            const language = request.query.language;
             console.log("userID----", userID);
            
             lessonServices.getLessonProgress(userID,language,(err: any, result: any) => {

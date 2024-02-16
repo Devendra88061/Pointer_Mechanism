@@ -25,9 +25,9 @@ class pointerController {
     // Get pointers
     static async getPointersByUserId(request: Request, response: Response, next: NextFunction) {
         try {
-            const userID = request.params.userId;
-            const sessionID = request.params.sessionId;
-            const language = request.params.language
+            const userID = request.query.userId;
+            const sessionID = request.query.sessionId;
+            const language = request.query.language
             if (userID == "null") {
                 response.status(400).send(new HttpResponse(null, null,"userId is not be null", null,null,null));
             }
