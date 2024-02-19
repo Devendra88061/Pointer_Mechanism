@@ -6,6 +6,6 @@ const lessonRouter = Router();
 
 lessonRouter.post("/addLesson", lessonController.addLesson);
 
-lessonRouter.get("/getLessonProgressByUserId", lessonController.getLessonProgress);
+lessonRouter.get("/getLessonProgressByUserId/:userId", lessonController.getLessonProgress);
 
 export default lessonRouter;

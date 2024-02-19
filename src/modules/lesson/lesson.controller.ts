@@ -24,7 +24,7 @@ class lessonController {
 
     static async getLessonProgress(request: Request, response: Response, next: NextFunction) {
         try {
-            const userID = request.query.userId;
+            const userID = request.params.userId;
             const language = request.query.language;
             console.log("userID----", userID);
            
