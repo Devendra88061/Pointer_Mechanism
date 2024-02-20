@@ -12,17 +12,21 @@ class pointerServices {
 
             const userID = result.userId;
             const sessionID = result.sessionId;
+            const language = result.language
 
             const pointerUserData = await new CrudOperations(Pointer).getAllDocuments({ userId: userID }, {});
             const pointerSessionData = await new CrudOperations(Pointer).getAllDocuments({ sessionId: sessionID }, {});
-
+            const languageData = await new CrudOperations(Pointer).getAllDocuments({ userId: userID , language: language}, {});
+            
             result = result.toObject();
 
             const totalUserPointer = pointerUserData.reduce((total: any, doc: any) => total + (doc.points || 0), 0);
             const totalSessionPointer = pointerSessionData.reduce((total: any, doc: any) => total + (doc.points || 0), 0);
+            const totalLanguagePoints = languageData.reduce((total: any, doc: any) => total + (doc.points || 0), 0);
 
             result.totalUserPoints = totalUserPointer;
-            result.totalSessionPoints = totalSessionPointer
+            result.totalSessionPoints = totalSessionPointer;
+            result.totalLanguagePoints = totalLanguagePoints;
 
             return next(null, result);
         } catch (err: any) {
